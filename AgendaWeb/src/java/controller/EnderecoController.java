@@ -27,6 +27,6 @@ public class EnderecoController {
         Contato c= new Contato(idContato);
         end.setIdContato(c);
         ef.gravar(end);
-        return "logado";
+        return "novoMeioContato";
     }
 }

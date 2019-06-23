@@ -18,7 +18,7 @@ import org.springframework.dao.DataAccessException;
  */
 public class MeioContatoFacade {
 
-    public MeioContatoDAO meioContatoDAO;
+    public MeioContatoDAO meioContatoDAO = new MeioContatoDAO();
 
     public MeioContatoFacade() {
     }

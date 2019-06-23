@@ -5,6 +5,7 @@
  */
 package model.dao;
 
+import entitymanager.GeraEntityManager;
 import model.bean.MeioContato;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -20,10 +21,27 @@ public class MeioContatoDAO {
     public EntityManager em;
 
     public MeioContatoDAO() {
+        em = GeraEntityManager.getEntityManager();
     }
 
     public MeioContato gravar(MeioContato meioContato) throws DataAccessException {
-        return em.merge(meioContato);
+        try {
+            em.getTransaction().begin();
+            System.out.println("Salvando a contato.");
+            // Verifica se o usuario ainda não está salva no banco de dados.
+            if (meioContato.getIdMeioContato()== null) {
+                //Salva os dados do usuario.
+                em.persist(meioContato);
+            } else {
+                //Atualiza ou adiciona os dados do usuario.
+                meioContato = em.merge(meioContato);
+            }
+            // Finaliza a transação.
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+        return meioContato;
     }
 
     public void excluir(MeioContato meioContato) throws DataAccessException {

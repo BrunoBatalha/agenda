@@ -30,7 +30,7 @@ public class ContatoDAO {
             em.getTransaction().begin();
             System.out.println("Salvando a contato.");
             // Verifica se o usuario ainda não está salva no banco de dados.
-            if (contato.getIdUsuario() == null) {
+            if (contato.getIdContato()== null) {
                 //Salva os dados do usuario.
                 em.persist(contato);
             } else {
