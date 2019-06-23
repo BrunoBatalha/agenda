@@ -16,10 +16,9 @@ import java.util.List;
  */
 public class EnderecoFacade {
 
-    public EnderecoDAO enderecoDAO;
+    public EnderecoDAO enderecoDAO = new EnderecoDAO();
 
     public EnderecoFacade() {
-        enderecoDAO = new EnderecoDAO();
     }
 
     public void gravar(Endereco endereco) {

@@ -19,10 +19,11 @@
                 <label>Data de aniversario:</label>
                 <input name="dataAniversario" type="text" >
                 <label>Seu id:</label>
-                <input name="idUsuario" type="text" readonly value="<%=(String)session.getAttribute("Id")%>">
+                <input name="idUsuario" type="text" readonly 
+                       value="<%=(String) session.getAttribute("Id")%>">
                 <input type="submit">
             </form>
-            
+
         </div>
     </body>
 </html>

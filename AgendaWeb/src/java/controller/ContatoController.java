@@ -6,6 +6,7 @@ import java.util.List;
 import model.bean.Contato;
 import model.bean.Usuario;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +16,8 @@ import pojo.FormContato;
 public class ContatoController {
 
     @RequestMapping("adicionarContato")
-    public String addContato(@ModelAttribute("form") FormContato form, @RequestParam("idUsuario") Integer idUsuario) {
+    public String addContato(@ModelAttribute("form") FormContato form,
+            @RequestParam("idUsuario") Integer idUsuario, Model model) {
         ContatoFacade cf = new ContatoFacade();
         Contato contato = new Contato();
 
@@ -29,12 +31,23 @@ public class ContatoController {
         List<Usuario> listUsuarios = uf.obterTodos();
         for (Usuario u : listUsuarios) {
             if (u.getIdUsuario() == idUsuario) {
-                    contato.setIdUsuario(u);
+                contato.setIdUsuario(u);
                 break;
             }
         }
-        
+
         cf.gravar(contato);
-        return "novoContato";
+        cf = new ContatoFacade();
+        List<Contato> listContatos = cf.obterTodos(idUsuario);
+        for (Contato c : listContatos) {
+            if (c.getNome().equals(contato.getNome())
+                    && c.getDataAniversario().equals(contato.getDataAniversario())) {
+                String nmContato = contato.getNome();
+                String idContato = Integer.toString(c.getIdContato());
+                model.addAttribute("pNmNvContato", nmContato);
+                model.addAttribute("pIdContato", idContato);
+            }
+        }
+        return "svContato";
     }
 }

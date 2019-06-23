@@ -12,9 +12,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Novo endereço</h1>
+        <h1>Novo endereço para <%=(String) session.getAttribute("pNmNvContato")%></h1>
         <div>
             <form  method="post" action="adicionarEndereco">
+                <label>ID contato:</label>
+                <input name="idContato" type="text" readonly 
+                       value="<%= (String) session.getAttribute("IdContato")%>">
                 <label>Bairro:</label>
                 <input name="bairro" type="text" >
                 <label>Cidade:</label>
