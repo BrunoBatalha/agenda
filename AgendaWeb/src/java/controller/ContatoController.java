@@ -3,6 +3,7 @@ package controller;
 import facade.ContatoFacade;
 import facade.UsuarioFacade;
 import java.util.List;
+import javax.swing.JOptionPane;
 import model.bean.Contato;
 import model.bean.Usuario;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,6 @@ public class ContatoController {
             @RequestParam("idUsuario") Integer idUsuario, Model model) {
         ContatoFacade cf = new ContatoFacade();
         Contato contato = new Contato();
-
         contato.setNome(form.getNome());
         contato.setCargo(form.getCargo());
         contato.setEmpresa(form.getEmpresa());

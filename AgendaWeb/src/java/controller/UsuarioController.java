@@ -24,7 +24,7 @@ public class UsuarioController {
         String senha = usuario.getSenha();
         Usuario usTeste = uf.obterPorLoginSenha(login, senha);
         if (usTeste == null) {
-            model.addAttribute("msg", "Login ou senha incorretos...");
+            model.addAttribute("msg", "Login ou senha incorretos!");
             return "login";
         } else {
             List<Usuario> listUsuarios = uf.obterTodos();
