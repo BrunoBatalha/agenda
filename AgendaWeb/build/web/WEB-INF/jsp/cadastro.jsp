@@ -35,8 +35,9 @@
                     <div class="fadeIn first">
                         <img src="<c:url value="/resources/img/perfilRedondo.png"/>" alt="User Icon" />
                     </div>
-
+                    <h4 class="text-primary text-uppercase"><%= (request.getAttribute("okay") != null) ? request.getAttribute("okay") : ""%></h4>
                     <form  method="post" action="cadastraUsuario">
+
                         <input type="text" id="login" class="fadeIn second" name="nome" placeholder="nome">
                         <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
                         <input type="password" id="password" class="fadeIn third" name="senha" placeholder="senha">

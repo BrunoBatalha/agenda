@@ -39,15 +39,15 @@
                     </div>
 
                 </div>
-                <nav class="navbar navbar-expand-lg navbar-light " style="background-color:#3498db;">
+                <nav class="navbar navbar-expand-lg navbar-light " style="background-color:#1c1f24;">
 
                     <div class="navbar-brand col-sm-6 d-flex">
                         <img src="<c:url value="/resources/img/icons8-contatos-64.png"/>">
                         <div class="mt-4" id="logo">Agenda</div>
                     </div>
                     <div class="col-sm-6 d-flex justify-content-end col-xs-6">
-                        <a href="login"><button id="btnPadrao" type="button" class="btn btn-light mr-2">Login</button></a>
-                        <a href="cadastrar"> <button id="btnPadrao" type="button" class="btn btn-light">Cadastrar-se</button></a>
+                        <a href="login"><button id="btnPadrao" type="button" class="btn btn-light rounded-0 mr-2">Login</button></a>
+                        <a href="cadastrar"> <button id="btnPadrao" type="button" class="btn btn-light rounded-0">Cadastrar-se</button></a>
                     </div>
 
                 </nav>
@@ -55,7 +55,7 @@
 
                 <div class="row">
                     <div id="botaoCentro" class="col-sm-12" align="center">
-                        <div id="txtInicial" class="animate-bottom">Mantenha seus contatos <br>organizados e atualizados!</div>
+                        <div id="txtInicial" class="animate-bottom">Agenda Top<br>para professores Tops!!</div>
 
                         <a href="cadastrar"> <button id="btnCadastrar" type="button" class="btn btn-primary btn-lg mt-5 animate-bottom">Cadastrar-se</button></a>
                     </div>

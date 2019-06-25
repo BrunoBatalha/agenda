@@ -20,21 +20,22 @@
     <body>
         <h1>Hello World!</h1>
         <%
-            String idContato = request.getParameter("id");
-
+            String idContato = request.getParameter("idC");
+            String idEndereco = request.getParameter("idE");
+            String idMeioC = request.getParameter("idMc");
+            
             EnderecoFacade ef = new EnderecoFacade();
-            Endereco endereco = new Endereco(Integer.parseInt(idContato));
+            Endereco endereco = new Endereco(Integer.parseInt(idEndereco));
             ef.excluir(endereco);
 
             MeioContatoFacade mc = new MeioContatoFacade();
-            MeioContato meioContato = new MeioContato(Integer.parseInt(idContato));
+            MeioContato meioContato = new MeioContato(Integer.parseInt(idMeioC));
             mc.excluir(meioContato);
 
             ContatoFacade c = new ContatoFacade();
             Contato contato = new Contato(Integer.parseInt(idContato));
             c.excluir(contato);
             response.sendRedirect("logado");
-
         %>
 
     </body>

@@ -35,11 +35,6 @@
 
             <div id="txtInicial" class="animate-bottom ">Agenda</div>
 
-            <form>
-                <input type="text" placeholder="Pesquisar..." class="mx-auto d-block mt-4" list="historico" id="pesquisa">
-
-            </form>
-
             <div class="text-center">
 
                 <table class="table table-borderless mt-5" id="contatos">
@@ -59,18 +54,19 @@
                             String id = (String) session.getAttribute("Id");
                             if (id != null) {
                                 List<Contato> listaContatos = uf.obterTodos(Integer.parseInt(id));
-                                
+
                                 for (Contato c : listaContatos) {
                                     List<Endereco> listaEnderecos = ef.obterTodos(c.getIdContato());
                                     List<MeioContato> listaMC = mcf.obterTodos(c.getIdContato());
-                                    Endereco end = listaEnderecos.get(0);
-                                    MeioContato mc = listaMC.get(0);
-                                    if (mc != null && end != null) {
+                                    if (listaEnderecos.size() != 0 && listaMC.size() != 0) {
+                                        Endereco end = listaEnderecos.get(0);
+                                        MeioContato mc = listaMC.get(0);
+
                                         out.println("<tr>");
-                                        out.println("<td style='width:20px;' scope='row'><input  style='background-color:transparent;  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);'type='button' class='btn btn-primary' data-toggle='modal' data-target='#c" + c.getIdContato() + "' id='btnVisualizar' name='contatoId' value='" + c.getIdContato() + "'></td>");
+                                        out.println("<td style='width:20px;' scope='row'><input  style='background-color:transparent;  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);'type='button' class='btn btn-primary tbbtn' data-toggle='modal' data-target='#c" + c.getIdContato() + "' id='btnVisualizar' name='contatoId' value='" + c.getIdContato() + "'></td>");
                                         out.println("<td>" + c.getNome() + "</td>");
                                         out.println("<td>" + end.getEndereco() + "</td>");
-                                        out.println("<td><a class='ml-2' href='excluir?id=" + c.getIdContato() + "'>Excluir</a></td>");
+                                        out.println("<td><a class='ml-2' href='excluir?idC=" + c.getIdContato() + "&idE="+end.getIdEndereco()+"&idMc="+mc.getIdMeioContato()+"'>Excluir</a></td>");
                                         out.println("</tr>");
                                         request.setAttribute("nome", c.getNome());
                                         request.setAttribute("cargo", c.getCargo());
@@ -128,7 +124,7 @@
 
                                     <div class="form-group ">
                                         <label for="inputEmail4">Tipo de Contato</label>
-                                        <input type="email" class="form-control" id="inputEmail4" value="<%= request.getAttribute("tipoCont")%>"readonly>
+                                        <input type="text" class="form-control" id="inputEmail4" value="<%= request.getAttribute("tipoCont")%>"readonly>
                                     </div>
 
                                     <div class="form-group ">
@@ -181,120 +177,19 @@
 
                         </div>
                     </div>
-            </div>
-            <%
+                    <%
+                                }
+                            }
+                        } else {
+                            out.print("<h2 class='text-danger text-uppercase'>Tente fazer login novamente</h2>");
                         }
-                    }
-                } else {
-                    out.print("<h2 class='text-danger text-uppercase'>Tente fazer login novamente</h2>");
-                }
 
-            %>
-        </tbody>
-    </table>
-</div>
-</div>
-
-<div class="modal fade" id="contatoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Contato</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                    %>
+                    </tbody>
+                </table>
             </div>
-            <div class="modal-body">
-
-                <form >
-
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Nome</label>
-                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email" readonly>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword4">Data de Aniversário</label>
-                            <input type="date" class="form-control" id="inputdate" readonly>
-                        </div>
-                    </div>
-
-
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Empresa</label>
-                            <input type="text" class="form-control" id="inputEmail4" readonly>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword4">Cargo<br></label>
-                            <input type="text" class="form-control" id="inputdate" readonly>
-                        </div>
-                    </div>
-
-
-
-
-
-
-                    <div class="form-group ">
-                        <label for="inputEmail4">Tipo de Contato</label>
-                        <input type="email" class="form-control" id="inputEmail4" readonly>
-                    </div>
-
-                    <div class="form-group ">
-                        <label for="inputEmail4">Conteudo</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" readonly></textarea>
-                    </div>
-
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputEmail4">Endereço</label>
-                            <input type="text" class="form-control" id="inputEmail4" readonly>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputPassword4">Numero</label>
-                            <input type="text" class="form-control" id="inputdate"readonly>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <input type="text" class="form-control" id="inputAddress" placeholder="Complemento" readonly>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="inputCity">Bairro</label>
-                            <input type="text" class="form-control" id="inputCity" readonly>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputState">Cidade</label>
-                            <input type="text" class="form-control" id="inputCity" readonly>
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="inputZip">UF</label>
-                            <input type="text" class="form-control" id="inputZip" readonly>
-                        </div>
-                    </div>
-
-                    <div class="form-group ">
-                        <label for="inputEmail4">Tipo de Endereço</label>
-                        <input type="email" class="form-control" id="inputEmail4" readonly>
-                    </div>
-
-
-
-                </form>
-            </div>
-
         </div>
-    </div>
-</div>
 
-</body>
+    </body>
 </html>
 

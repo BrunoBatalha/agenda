@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UsuarioController {
 
     @RequestMapping("cadastraUsuario")
-    public String cadUsuario(Usuario usuario) {
+    public String cadUsuario(Usuario usuario, Model model) {
         UsuarioFacade uf = new UsuarioFacade();
         uf.gravar(usuario);
-        return "teste";
+        model.addAttribute("okay", "Cadastro realizado com sucesso!");
+        return "cadastro";
     }
 
     @RequestMapping("loginUsuario")

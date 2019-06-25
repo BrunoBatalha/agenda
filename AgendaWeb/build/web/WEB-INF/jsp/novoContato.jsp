@@ -50,22 +50,22 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputEmail4">Nome</label>
-                        <input type="text" class="form-control" id="inputEmail4" name="nome" placeholder="nome" required>
+                        <input type="text" class="form-control" id="inputEmail4" name="nome" placeholder="Digite o nome do contato" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputPassword4">Data de Aniversário</label>
-                        <input type="text" class="form-control" id="inputdate" name="dataAniversario" required>
+                        <input type="text" class="form-control" id="inputdate" placeholder="xx/xx/xxxx" pattern="\d{1,2}/\d{1,2}/\d{4}" name="dataAniversario" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputEmail4">Empresa</label>
-                        <input type="text" class="form-control" id="inputEmail4" name="empresa" required>
+                        <input type="text" class="form-control" id="inputEmail4" name="empresa" required placeholder="Digite nome da empresa">
                     </div>
                     <div class="form-group col-md-6">
                         <label for="inputPassword4">Cargo<br></label>
-                        <input type="text" class="form-control" id="inputdate" name="cargo" required>
+                        <input type="text" class="form-control" id="inputdate" name="cargo" required placeholder="Digite o cargo">
                     </div>
                 </div>
 
