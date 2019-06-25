@@ -45,7 +45,19 @@ public class MeioContatoDAO {
     }
 
     public void excluir(MeioContato meioContato) throws DataAccessException {
-        em.remove(carregar(meioContato.getIdMeioContato()));
+         try {
+            // Inicia uma transação com o banco de dados.
+            em.getTransaction().begin();
+            // Consulta a pessoa na base de dados através do seu ID.
+            MeioContato removerMc = em.find(MeioContato.class, meioContato.getIdMeioContato());
+            System.out.println("Excluindo os dados de: " + removerMc.getConteudo());
+            // Remove a pessoa da base de dados.
+            em.remove(removerMc);
+            // Finaliza a transação.
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
     }
 
     public MeioContato carregar(Integer id) throws DataAccessException {
@@ -53,7 +65,7 @@ public class MeioContatoDAO {
     }
 
     public List obterTodos(Integer idContato) throws DataAccessException {
-        Query qry = em.createQuery("SELECT m FROM MEIOCONTATO m WHERE m.idContato.idContato=:idContato");
+        Query qry = em.createQuery("SELECT m FROM MeioContato m WHERE m.idContato.idContato = :idContato");
         qry.setParameter("idContato", idContato);
         return qry.getResultList();
 

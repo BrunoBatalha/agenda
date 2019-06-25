@@ -46,7 +46,19 @@ public class ContatoDAO {
     }
 
     public void excluir(Contato contato) throws DataAccessException {
-        em.remove(carregar(contato.getIdContato()));
+         try {
+            // Inicia uma transação com o banco de dados.
+            em.getTransaction().begin();
+            // Consulta a pessoa na base de dados através do seu ID.
+            Contato removerCont = em.find(Contato.class, contato.getIdContato());
+            System.out.println("Excluindo os dados de: " + removerCont.getNome());
+            // Remove a pessoa da base de dados.
+            em.remove(removerCont);
+            // Finaliza a transação.
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
     }
 
     public Contato carregar(Integer id) throws DataAccessException {

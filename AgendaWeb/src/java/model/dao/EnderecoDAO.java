@@ -46,7 +46,19 @@ public class EnderecoDAO {
     }
 
     public void excluir(Endereco endereco) throws DataAccessException {
-        em.remove(carregar(endereco.getIdEndereco()));
+         try {
+            // Inicia uma transação com o banco de dados.
+            em.getTransaction().begin();
+            // Consulta a pessoa na base de dados através do seu ID.
+            Endereco removerEnd = em.find(Endereco.class, endereco.getIdEndereco());
+            System.out.println("Excluindo os dados de: " + removerEnd.getEndereco());
+            // Remove a pessoa da base de dados.
+            em.remove(removerEnd);
+            // Finaliza a transação.
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
     }
 
     public Endereco carregar(Integer id) throws DataAccessException {
@@ -54,7 +66,7 @@ public class EnderecoDAO {
     }
 
     public List obterTodos(Integer idContato) throws DataAccessException {
-        Query qry = em.createQuery("SELECT e FROM ENDERECO e WHERE e.idContato.idContato = :idContato");
+        Query qry = em.createQuery("SELECT e FROM Endereco e WHERE e.idContato.idContato = :idContato");
         qry.setParameter("idContato", idContato);
         return qry.getResultList();
     }

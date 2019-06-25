@@ -1,3 +1,12 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+ 
+*/
+
 .fundo {
     background: url(../img/background.png);
     position: fixed;
@@ -168,7 +177,7 @@ body {
 .fundo2 {
 
 
-    min-height: 670px;
+    min-height: 1200px;
 
     overflow-x: hidden;
     overflow-y: hidden;
@@ -181,6 +190,10 @@ body {
 
 }
 
+.sem-scroll{
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
 
 
 
@@ -274,8 +287,7 @@ h2.active {
 
 input[type=button],
 input[type=submit],
-input[type=reset]
-{
+input[type=reset] {
     background-color: #28A695;
 
     border: none;
@@ -314,8 +326,7 @@ input[type=reset]:active {
     transform: scale(0.95);
 }
 
-input[type=text],
-input[type=password]{
+input[type=text],input[type=password]  {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -336,13 +347,13 @@ input[type=password]{
     border-radius: 5px 5px 5px 5px;
 }
 
-input[type=text]:focus {
+input[type=text]:focus ,input[type=password] :focus{
     background-color: #fff;
     border-bottom: 2px solid #5fbae9;
 
 }
 
-input[type=text]:placeholder {
+input[type=text]:placeholder ,input[type=password] :placeholder{
     color: #cccccc;
 }
 
@@ -481,8 +492,44 @@ input[type=text]:placeholder {
     width: 100%;
 }
 
+
+
 /* OTHERS */
 
 *:focus {
     outline: none;
+}
+
+#btnVisualizar{
+    
+    background: transparent;
+    border-color: transparent;
+}
+
+#btnVisualizar:hover{
+    
+    background: gray;
+    border-color: gray;
+}
+
+
+
+#formContato{
+    padding: 100px;
+    width: 800px;
+    height: 550px;
+    color: white;
+    box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+    
+}
+
+#btnCon{
+    
+    width: 200px;
+    height: 50px;
+    background-color: #1d9484;
+    border-color: #1d9484;
+    color: white;
+    font-size: 20px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }

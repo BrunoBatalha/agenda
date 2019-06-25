@@ -24,12 +24,12 @@
         <link href="<c:url value="/resources/css/estilo.css"/>" rel="stylesheet" type="text/css"/>
     </head>
 
-    <body>
+    <body class="sem-scroll">
         <div class="fundo2 inicial">
             <div class="wrapper fadeInDown">
                 <div id="formContent">
                     <div class="fadeIn first">
-                        <img src="<c:url value="/resources/img/perfilRedondo.png"/>" alt="User Icon" />
+                        <img src="<c:url value="/resources/img/perfil-1.png"/>" alt="User Icon" />
                     </div>
 
                     <form method="post" action="loginUsuario">

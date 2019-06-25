@@ -28,7 +28,7 @@
 
         <div id="loader" class="h-100" align="center">
 
-            <img src="<c:url value="/resources/img/loading.gif"/>"  width="15%"alt=""/>
+            <img src="<c:url value="/resources/img/loading.gif"/>" id="gif" width="15%"alt=""/>
         </div>
         <div style="display:none;" id="myDiv">
 
@@ -45,7 +45,7 @@
                         <img src="<c:url value="/resources/img/icons8-contatos-64.png"/>">
                         <div class="mt-4" id="logo">Agenda</div>
                     </div>
-                    <div class="col-sm-6 d-flex justify-content-end">
+                    <div class="col-sm-6 d-flex justify-content-end col-xs-6">
                         <a href="login"><button id="btnPadrao" type="button" class="btn btn-light mr-2">Login</button></a>
                         <a href="cadastrar"> <button id="btnPadrao" type="button" class="btn btn-light">Cadastrar-se</button></a>
                     </div>
